@@ -151,7 +151,7 @@
                                 <div class="ibox-content">
                                     
 
-                            {{$state_data}}        
+                           {{--  $state_data  --}}       
                 <div class="table-responsive">
                     <table class="table table-striped table-bordered table-hover dataTables-example" >
                     <thead>
@@ -166,7 +166,7 @@
                       <tr class="gradeA">
                           <td>{{$data_state->state_name}}</td>
                           <td>{{$data_state->country_name}}</td>
-                          <td>Edit|Delete</td>
+                          <td><a href=''class='btn btn-info'>Edit</a>|<a href='' class='btn btn-danger'>Delete</a></td>
                       </tr>
                       @endforeach
                     </tbody>

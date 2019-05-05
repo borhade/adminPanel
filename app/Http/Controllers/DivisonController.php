@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\divisonmodel;
 
-class DivisonController extends Controller
+class divisonController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,8 +14,8 @@ class DivisonController extends Controller
      */
     public function index()
     {
-       return view('system_mgmt/divison/index');
-
+        $divison_data = divisonmodel::all();
+        return view('system_mgmt.divison.index')->with('data_divison',$divison_data);
     }
 
     /**
@@ -24,7 +25,8 @@ class DivisonController extends Controller
      */
     public function create()
     {
-        //return view('system_mgmt/divison/create');
+       // echo'hiii';
+        return view('system_mgmt/divison/create');
     }
 
     /**
@@ -35,11 +37,14 @@ class DivisonController extends Controller
      */
     public function store(Request $request)
     {
-       /* $this->validate($request,[
-            'division_name'=>'required'
+        $this->validate($request,[
+            'divison_name'=>'required'
         ]);
 
-        $request['division_name'];*/
+        $post = new divisonmodel;
+        $post->divison_name=$request['divison_name'];
+        $post->save(); 
+
     }
 
     /**

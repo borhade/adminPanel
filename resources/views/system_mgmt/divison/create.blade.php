@@ -166,11 +166,12 @@
                                     </div>
                                 </div>
                                 <div class="ibox-content">
-                                    <form method="post" action="{{route('division.store')}}">
+                                    <form method="post" action="{{route('divison.store')}}">
                                         {{ csrf_field() }}
                                         <div class="hr-line-dashed"></div>
                                         <div class="form-group  row"><label class="col-sm-2 col-form-label">Name</label>
-                                            <div class="col-sm-10"><input type="text" class="form-control"></div>
+                                            <div class="col-sm-10"><input type="text" 
+                                              name="divison_name" class="form-control"></div>
                                         </div> 
                                      <div class="hr-line-dashed"></div>
                                         <div class="form-group row">

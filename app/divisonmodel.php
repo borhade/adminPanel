@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class divison extends Model
+class divisonmodel extends Model
 {
-    //
+    protected $table = 'divison';
 }

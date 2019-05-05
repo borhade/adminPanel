@@ -50,7 +50,7 @@ Route::resource('/department','departmentController');
 //stateController
 Route::resource('/state','StateController');
 //divison Controller
-Route::resource('/divison','DivisonController');
+Route::resource('/divison','divisonController');
 //userController
 Route::resource('/user','UserController');
 
