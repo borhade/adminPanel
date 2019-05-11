@@ -168,7 +168,12 @@
                             <td>{{$data_city->city_name}}</td>
                             <td>{{$data_city->state_name}}</td>
                             <td class="center">{{$data_city->created_at}}</td> 
-                            <td><a href='#' class='btn btn-info'>Edit</a>|<a href='#' class='btn btn-danger'>Delete</a></td>
+                            <td><a href='#' class='btn btn-info'>Edit</a>|
+                              <form method="post" action="{{route('city.destroy',['id'=>$data_city->city_id])}}">
+                                <input type="hidden" name="_method" value="Delete">
+                                <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                              </form>
                         </tr>
                     @endforeach 
                     </tbody>

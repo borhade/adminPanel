@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\divisonmodel;
+use\DB;
 
 class divisonController extends Controller
 {
@@ -55,7 +56,7 @@ class divisonController extends Controller
      */
     public function show($id)
     {
-        //
+        echo $id;
     }
 
     /**
@@ -89,6 +90,6 @@ class divisonController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('divison')->where('divison_id',$id)->delete();
     }
 }

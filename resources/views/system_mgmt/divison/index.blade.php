@@ -154,6 +154,7 @@
                     <table class="table table-striped table-bordered table-hover dataTables-example" >
                     <thead>
                     <tr>
+                       <th>Id</th>
                         <th>Divison Name</th>
                         <th>Actions</th>
                       </tr>
@@ -161,8 +162,15 @@
                     <tbody>
                     @foreach($data_divison AS $divison_res) 
                     <tr class="gradeX">
+                       <td>{{$divison_res['divison_id']}}</td>
                         <td>{{$divison_res['divison_name']}}</td>
-                        <td><a href='' class='btn btn-info'>Edit<a/>|<a href='' class='btn btn-danger'>Delete<a/></td>
+                        <td><a href='{{route('divison.show',['id'=>$divison_res->divison_id])}}' class='btn btn-info'>Edit<a/>
+                          <form method='POST' action='{{route('divison.destroy',['id'=>$divison_res->divison_id])}}'>
+                          <input type='hidden' name='_method' value='DELETE'>
+                            <input type='hidden' name='_token' value='{{csrf_token()}}'> 
+                            <button type="submit" class="btn btn-danger">Remove item</button>
+                          </form>
+                        </td>
                     </tr>
                   @endforeach      
                     </tbody>

@@ -51,6 +51,8 @@ Route::resource('/department','departmentController');
 Route::resource('/state','StateController');
 //divison Controller
 Route::resource('/divison','divisonController');
+//Route::get('/deleteUser/{id}', 'divisonController@deleteUser');
+
 //userController
 Route::resource('/user','UserController');
 

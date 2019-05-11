@@ -94,6 +94,6 @@ class CityController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('tbl_city')->where('city_id',$id)->delete();
     }
 }

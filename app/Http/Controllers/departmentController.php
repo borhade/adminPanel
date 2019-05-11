@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\department;
-
+use\DB;
 
 class departmentController extends Controller
 {
@@ -88,6 +88,7 @@ class departmentController extends Controller
      */
     public function destroy($id)
     {
-        //
+       // echo  $id;
+        DB::table('tbl_dept')->where('dept_id',$id)->delete();
     }
 }
