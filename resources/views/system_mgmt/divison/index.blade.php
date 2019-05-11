@@ -164,7 +164,7 @@
                     <tr class="gradeX">
                        <td>{{$divison_res['divison_id']}}</td>
                         <td>{{$divison_res['divison_name']}}</td>
-                        <td><a href='{{route('divison.show',['id'=>$divison_res->divison_id])}}' class='btn btn-info'>Edit<a/>
+                        <td><a href='{{route('divison.edit',['id'=>$divison_res->divison_id])}}' class='btn btn-info'>Edit</a>
                           <form method='POST' action='{{route('divison.destroy',['id'=>$divison_res->divison_id])}}'>
                           <input type='hidden' name='_method' value='DELETE'>
                             <input type='hidden' name='_token' value='{{csrf_token()}}'> 

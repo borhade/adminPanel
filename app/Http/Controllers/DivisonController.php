@@ -56,7 +56,7 @@ class divisonController extends Controller
      */
     public function show($id)
     {
-        echo $id;
+       
     }
 
     /**
@@ -67,7 +67,9 @@ class divisonController extends Controller
      */
     public function edit($id)
     {
-        //
+
+         $divison_data = DB::table('divison')->where('divison_id',$id)->get();
+        return view('system_mgmt.divison.edit')->with('divison_show',$divison_data);
     }
 
     /**
@@ -79,7 +81,10 @@ class divisonController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $update_post = divisonmodel::find($id);
+        $update_post->divison_name   = $request->input('divison_name');
+        $update_post->save();
+
     }
 
     /**
