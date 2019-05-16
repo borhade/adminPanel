@@ -148,32 +148,30 @@
                                     </div>
                                 </div>
                                 <div class="ibox-content">
-                                    <form method="POST" action="{{route('department.store')}}">
+                                    <form method="POST" action="{{route('user.store')}}">
                                         {{ csrf_field() }}
-                                        
                                         <div class="form-group  row"><label class="col-sm-2 col-form-label">User Name</label>
-                                            <div class="col-sm-6"><input type="text" class="form-control" name="depart_name"></div>
+                                            <div class="col-sm-6"><input type="text" class="form-control" name="user_name"></div>
                                         </div> 
                                          <div class="form-group  row"><label class="col-sm-2 col-form-label">Email</label>
-                                            <div class="col-sm-6"><input type="text" class="form-control" name="depart_name"></div>
+                                            <div class="col-sm-6"><input type="text" class="form-control" name="email"></div>
                                         </div> 
                                         <div class="form-group  row"><label class="col-sm-2 col-form-label">First Name</label>
-                                            <div class="col-sm-6"><input type="text" class="form-control" name="depart_name"></div>
+                                            <div class="col-sm-6"><input type="text" class="form-control" name="first_name"></div>
                                         </div> 
                                         <div class="form-group  row"><label class="col-sm-2 col-form-label">Last Name</label>
-                                            <div class="col-sm-6"><input type="text" class="form-control" name="depart_name"></div>
+                                            <div class="col-sm-6"><input type="text" class="form-control" name="last_name"></div>
                                         </div> 
                                         <div class="form-group  row"><label class="col-sm-2 col-form-label">Password</label>
-                                            <div class="col-sm-6"><input type="text" class="form-control" name="depart_name"></div>
+                                            <div class="col-sm-6"><input type="text" class="form-control" name="password"></div>
                                         </div>
-                                         <div class="form-group  row"><label class="col-sm-2 col-form-label">Confirm Password</label>
+                                        {{--  <div class="form-group  row"><label class="col-sm-2 col-form-label">Confirm Password</label>
                                             <div class="col-sm-6"><input type="text" class="form-control" name="depart_name"></div>
-                                        </div>  
-                                         
+                                        </div> --}}  
                                      <div class="hr-line-dashed"></div>
                                         <div class="form-group row">
                                             <div class="col-sm-4 col-sm-offset-2">
-                                                <button class="btn btn-white btn-sm" type="submit">Cancel</button>
+                                               {{--  <button class="btn btn-white btn-sm" type="submit">Cancel</button> --}}
                                                 <button class="btn btn-primary btn-sm" type="submit">Save changes</button>
                                             </div>
                                         </div>

@@ -1,9 +1,8 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
-
+use App\Usermodel;
+use DB;
 class UserController extends Controller
 {
     /**
@@ -34,7 +33,13 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user_post = new Usermodel(); 
+        $user_post->username = $request->user_name;
+        $user_post->email = $request->email;
+        $user_post->firstname = $request->first_name;
+        $user_post->lastname = $request->last_name;
+        $user_post->password = $request->password;
+        $user_post->save();   
     }
 
     /**

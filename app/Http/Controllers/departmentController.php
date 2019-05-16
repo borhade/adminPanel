@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\department;
-use\DB;
+use DB;
 class departmentController extends Controller
 {
     /**
