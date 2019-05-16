@@ -68,8 +68,10 @@ class CountryController extends Controller
      */
     public function edit($id)
     {
-        //
-    }
+        $get_countries = DB::table('tbl_country')->where('country_id',$id)->get();
+       // var_dump( $get_countries );
+        return view('system_mgmt.country.edit')->with('get_countries',$get_countries);      
+    } 
 
     /**
      * Update the specified resource in storage.
@@ -80,7 +82,7 @@ class CountryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        DB::table('tbl_country')->where('country_id',$id)->update(['country_name'=>$request->input('country_name'),'country_code'=>$request->input('country_code')]);
     }
 
     /**
