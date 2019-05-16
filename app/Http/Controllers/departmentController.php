@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\department;
 use\DB;
-
 class departmentController extends Controller
 {
     /**
@@ -14,8 +13,7 @@ class departmentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
-
-       $department_data = department::all();
+        $department_data = department::all();
         return view('system_mgmt/department/index')->with('get_depatment',$department_data);
     }
 
@@ -24,8 +22,7 @@ class departmentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
+    public function create(){
        return view('system_mgmt/department/create');
     }
 
@@ -37,10 +34,10 @@ class departmentController extends Controller
      */
     public function store(Request $request)
     {
-            $this->validate($request,[
-                'depart_name'=>'required'
-            ]);
-            
+        $this->validate($request,[
+            'depart_name'=>'required'
+        ]);
+        
         $post = new department;
         $post->dept_name = $request['depart_name'];
         $post->save();    
@@ -65,7 +62,8 @@ class departmentController extends Controller
      */
     public function edit($id)
     {
-        //
+       $department_data = DB::table('tbl_dept')->where('dept_id',$id)->get();
+       return view('system_mgmt.department.edit')->with('department_edit',$department_data);
     }
 
     /**
@@ -75,9 +73,9 @@ class departmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request, $id){
+
+        DB::table('tbl_dept')->where('dept_id',$id)->update(['dept_name'=>$request->input('depart_name')]);
     }
 
     /**
@@ -86,9 +84,7 @@ class departmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-       // echo  $id;
+    public function destroy($id){
         DB::table('tbl_dept')->where('dept_id',$id)->delete();
     }
 }

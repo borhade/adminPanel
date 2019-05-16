@@ -164,11 +164,17 @@
                     <tbody>
                       @foreach($country_data AS $data_country)
                         <tr>
-                           <td>{{$data_country['country_id']}}</td>
-                             <td>{{$data_country['country_name']}}</td>
-                            <td>{{$data_country['country_code']}}</td> 
-                            <td>{{$data_country['created_at']}}}</td>
-                            <td><a href='#' class='btn btn-info'>Edit</a>|<a href='' class='btn btn-danger'>Delete</a></td>
+                           <td>{{$data_country->country_id}}</td>
+                             <td>{{$data_country->country_name}}</td>
+                            <td>{{$data_country->country_code}}</td> 
+                            <td>{{$data_country->created_at}}</td>
+                            <td><a href='#' class='btn btn-info'>Edit</a>
+                              <form action="{{route('country.destroy',['id'=>$data_country->country_id])}}" method="post">
+                                <input type="hidden" name="_method" value="Delete">
+                                <input type="hidden" name="_token" value="{{csrf_token()}}">
+                               <button type="submit" class='btn btn-danger'>Delete</button>
+                              </form>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>

@@ -16,11 +16,11 @@ class CityController extends Controller
     public function index()
     {
     
-        $cities = DB::table('tbl_city')
+        $state = DB::table('tbl_city')
             ->join('tbl_state', 'tbl_city.state_id', '=', 'tbl_state.state_id')
             ->select('tbl_city.city_name','tbl_city.city_id','tbl_city.created_at','tbl_state.state_name', 'tbl_state.state_id')
             ->get();           
-       return view('system_mgmt/city/index')->with('city_data',$cities);
+       return view('system_mgmt/city/index')->with('city_data',$state);
     }
 
     /**
@@ -71,7 +71,9 @@ class CityController extends Controller
      */
     public function edit($id)
     {
-        //
+        $states = state::all();
+        $get_citydata =DB::table('tbl_city')->where('city_id',$id)->get();
+        return view('system_mgmt/city/edit')->with(['get_city'=>$get_citydata,'state_name'=>$states]);
     }
 
     /**
@@ -83,7 +85,7 @@ class CityController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        DB::table('tbl_city')->where('city_id',$id)->update(['city_name'=>$request->input('city_name'),'state_id'=>$request->input('state_name')]);
     }
 
     /**

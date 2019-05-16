@@ -1,11 +1,4 @@
-
 @extends('layouts.app')
-
-
- <?php
-//var_dump($divison_show);
-?>
-
   @section('content')
            <div id="page-wrapper" class="gray-bg dashbard-1">
                   <div class="row border-bottom">
@@ -155,11 +148,12 @@
                                     </div>
                                 </div>
                                 <div class="ibox-content">
-                                    <form method="post" action="{{route('divison.update',['id=>$divison_show[0]->divison_id'])}}">
+                                    <form method="post" action="{{route('divison.update',['id'=>$divison_show[0]->divison_id])}}">
                                         <input type="hidden" name="_method" value="PUT">
                                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                                         <div class="hr-line-dashed"></div>
                                         <div class="form-group  row"><label class="col-sm-2 col-form-label">Name</label>
+                                    
                                             <div class="col-sm-10"><input type="text" 
                                               name="divison_name" class="form-control" value="{{$divison_show[0]->divison_name}}"></div>
                                         </div> 

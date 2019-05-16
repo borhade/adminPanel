@@ -150,8 +150,7 @@
                                 </div>
                                 <div class="ibox-content">
                                     <form method="POST" action="{{route('department.store')}}">
-                                        {{ csrf_field() }}
-                                        
+                                        {{csrf_field()}}
                                         <div class="form-group  row"><label class="col-sm-2 col-form-label">Name</label>
                                             <div class="col-sm-10"><input type="text" class="form-control" name="depart_name"></div>
                                         </div> 

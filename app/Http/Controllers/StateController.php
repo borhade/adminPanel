@@ -22,10 +22,9 @@ class StateController extends Controller
 
        $state_data = DB::table('tbl_state')
             ->join('tbl_country', 'tbl_state.country_id', '=', 'tbl_country.country_id')
-            ->select('tbl_state.state_name','tbl_country.country_name')
-            ->get();                
-
-
+            ->select('tbl_state.state_id','tbl_state.state_name','tbl_country.country_name')
+            ->get();               
+       // $state_data = state::all();
        return view('system_mgmt/state/index')->with('state_data',$state_data);
     }
 
@@ -55,7 +54,7 @@ class StateController extends Controller
         
         $post = new state();
         $post->state_name = $request['state_name'];
-        $post->country_name = $request['country_name'];
+        $post->country_id = $request['country_name'];
         $post->save();
     }
 
@@ -78,7 +77,10 @@ class StateController extends Controller
      */
     public function edit($id)
     {
-        //
+         $country_data =country::all();       
+        $state_tabledata = DB::table('tbl_state')->where('state_id',$id)->get(); 
+        return view('system_mgmt.state.edit')->with(['countries'=>$country_data,'state_tabledata'=> $state_tabledata]); 
+
     }
 
     /**
@@ -90,7 +92,7 @@ class StateController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        DB::table('tbl_state')->where('state_id',$id)->update(['state_name'=>$request->input('state_name'),'country_id'=>$request->input('country_name')]);
     }
 
     /**
@@ -101,6 +103,6 @@ class StateController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('tbl_state')->where('state_id',$id)->delete();
     }
 }

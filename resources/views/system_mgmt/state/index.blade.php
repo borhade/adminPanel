@@ -156,17 +156,25 @@
                     <table class="table table-striped table-bordered table-hover dataTables-example" >
                     <thead>
                     <tr>
-                        <th>state Name</th>
-                        <th>Country Name</th>
-                        <th>Actions</th>
+                      <th>State Id</th>
+                      <th>State Name</th>
+                      <th>Country Name</th>
+                      <th>Actions</th>
                     </tr>
                     </thead>
                     <tbody>
                       @foreach($state_data AS $data_state)
                       <tr class="gradeA">
+                        <td>{{$data_state->state_id}}</td>
                           <td>{{$data_state->state_name}}</td>
                           <td>{{$data_state->country_name}}</td>
-                          <td><a href=''class='btn btn-info'>Edit</a>|<a href='' class='btn btn-danger'>Delete</a></td>
+                          <td><a href='{{route('state.edit',['id'=>$data_state->state_id])}}' class='btn btn-info'>Edit</a>|
+                             <form action="{{route('state.destroy',['id'=>$data_state->state_id])}}" method="post">
+                                <input type="hidden"  name="_method" value="Delete"> 
+                                <input type="hidden"  name="_token" value="{{csrf_token()}}">
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                             </form> 
+                          </td>
                       </tr>
                       @endforeach
                     </tbody>
@@ -177,4 +185,4 @@
           </div>
       </div>
   </div>
-@endsection     
+@endsection          

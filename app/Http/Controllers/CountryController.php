@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\country;
+use\DB;
 
 class CountryController extends Controller
 {
@@ -90,6 +91,7 @@ class CountryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('tbl_country')->where('country_id',$id)->delete();
+        //echo $id;
     }
 }

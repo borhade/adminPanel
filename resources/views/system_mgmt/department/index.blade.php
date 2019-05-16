@@ -164,15 +164,14 @@
                     <tbody>
                      @foreach($get_depatment AS $depatment_get) 
                     <tr class="gradeX">
-                       <td>{{$depatment_get->dept_id}}</td>
-                        <td>{{$depatment_get['dept_name']}}</td>
-                       
+                        <td>{{$depatment_get->dept_name}}</td>
+                        <td>{{$depatment_get->created_at}}</td>
                         <td>
-                          <a href="#" class="btn btn-info" role="button">Edit</a>|
-                          <form method="post" action="{{route('department.destroy',['id'=>$depatment_get->dept_id])}}">
-                            <input type="hidden" name="_method" value="Delete">
+                          <a href="{{route('department.edit',['id'=>$depatment_get->dept_id])}}" class="btn btn-info" role="button">Edit</a>
+                          <form action='{{route('department.destroy',['id'=>$depatment_get->dept_id])}}' method='post'>
+                            <input type="hidden" name="_method" value="delete">
                             <input type="hidden" name="_token" value="{{csrf_token()}}">
-                             <button type="submit" class="btn btn-danger">Delete</button>
+                            <input type="submit" value="Delete" class="btn btn-danger">
                           </form>
                         </td>                       
                     </tr>
