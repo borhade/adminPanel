@@ -12,7 +12,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('user_mgmt/index');
+        $user_data = Usermodel::all();
+        return view('user_mgmt/index')->with('user_post', $user_data);
     }
 
     /**
@@ -33,6 +34,15 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+       
+        $this->validate($request,[
+           'user_name'=>'required',
+           'email'=>'required',
+           'first_name'=>'required', 
+           'last_name'=>'required',
+           'password'=>'required'
+        ]);
+
         $user_post = new Usermodel(); 
         $user_post->username = $request->user_name;
         $user_post->email = $request->email;
@@ -84,6 +94,6 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
-    }
+        DB::table('users')->where('id',$id)->delete();  
+     }
 }
