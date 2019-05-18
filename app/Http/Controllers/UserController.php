@@ -71,7 +71,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user_data = DB::table('users')->where('id',$id)->get();
+        return view('user_mgmt/edit')->with('user_data', $user_data);
     }
 
     /**
@@ -83,8 +84,8 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-    }
+        DB::table('users')->where('id', $id)->update(['username'=>$request->user_name,'email'=>$request->email,'firstname'=>$request->first_name,'lastname'=>$request->last_name,'password'=>$request->password]);
+    }   
 
     /**
      * Remove the specified resource from storage.

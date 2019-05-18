@@ -167,11 +167,11 @@
                         <td>{{$post_user->firstname}}</td>
                         <td>{{$post_user->lastname}}</td>
                         <td>{{$post_user->email}}</td>
-                        <td><a href="">Edit</a>
+                        <td><a href="{{route('user.edit',['id'=>$post_user->id])}}">Edit</a>
                         <form action="{{route('user.destroy',['id'=>$post_user->id])}}" method="post">
                             <input type="hidden"  name="_method" value="delete">
                             <input type="hidden" name="_token"  value="{{csrf_token()}}">
-                            <button type="submit" clas="btn btn-danger">Delete</button>
+                            <button type="submit" class="btn btn-danger">Delete</button>
                         </form>
                         </td>
                     </tr> 
